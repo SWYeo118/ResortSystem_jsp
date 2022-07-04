@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Google Maps</title>
+
+    <style type="text/css">
+        /* Set the size of the div element that contains the map */
+        #map {
+            height: 500px;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
+        }
+    </style>
+    <script>
+        function initMap() {
+
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 15,
+                center: { lat: 37.5103503, lng: 126.9960378 },
+            });
+
+            for (var i = 0; i < locations.length; i++) {
+                var marker = new google.maps.Marker({
+                    map: map,
+                    label: locations[i].place,
+                    position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
+                });
+            }
+        }
+        const locations = [
+             { place:"반포한강공원", lat: 37.5103503, lng: 126.9960378 },
+            /* { place:"어린이대공원역", lat: 37.547263, lng: 127.074181 },  */
+        ];
+
+    </script>
+</head>
+
+<body>
+    <center><h2>구글 맵을 사용해서 평화리조트의 위치를 확인해보세요</h2></center>
+    <!--The div element for the map -->
+    <div id="map"></div>
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClImZhGTtBYKvWOA-jUn6lAPn2CJY9qYQ&callback=initMap&libraries=&v=weekly"
+        async></script>
+</body>
+
+</html>
