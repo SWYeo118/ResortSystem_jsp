@@ -44,6 +44,7 @@ function submitForm(mode) {
 </head>
 <body>
 <FORM METHOD=POST name='fm'>
+<center>
 <table width=650 border=1 cellspacing=0 cellpadding=5>
 <tr>
 	<td><b>번호</b></td>
@@ -62,6 +63,8 @@ function submitForm(mode) {
 	<td><textarea style='width:500px; height:250px;' name=content >${content}</textarea></td>
 </tr>
 </table>
+</center>
+<center>
 <table width=650>
 <tr>
 	<td width=600></td>
@@ -70,6 +73,7 @@ function submitForm(mode) {
 	<td><input type=button value="삭제" OnClick="submitForm('delete')"></td>
 </tr>
 </table>
+</center>
 </FORM>
 </body>
 </html>
