@@ -19,7 +19,7 @@ String titleTmp = request.getParameter("title");
 String contentTmp = request.getParameter("content");
 context.setAttribute("titleTmp", titleTmp);
 context.setAttribute("contentTmp", contentTmp);
-stmt.execute("insert into gongji (title, date, content) values('"+ titleTmp + "','" + formatDate + "','" + contentTmp + "');");	
+stmt.execute("insert into gongji (title, date, content, viewingCount) values('"+ titleTmp + "','" + formatDate + "','" + contentTmp + "', 0);");	
 stmt.close();
 conn.close();
 %>
@@ -32,6 +32,6 @@ conn.close();
 <meta charset="UTF-8">
 </head>
 <body>
-<jsp:forward page="listPage_gongji.jsp" />
+<jsp:forward page="e_02.jsp" />
 </body>
 </html>

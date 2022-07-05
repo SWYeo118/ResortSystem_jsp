@@ -6,20 +6,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-request.setCharacterEncoding("utf-8");
-LocalDate now = LocalDate.now();
-DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-String formatDate = now.format(formatter);
 ServletContext context = getServletContext();
-context.setAttribute("formatDate", formatDate);
 Class.forName("com.mysql.cj.jdbc.Driver");
 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kopoctc", "root", "CJDghd9311@");
 Statement stmt = conn.createStatement();
-String titleTmp = request.getParameter("title");
-String contentTmp = request.getParameter("content");
-context.setAttribute("titleTmp", titleTmp);
-context.setAttribute("contentTmp", contentTmp);
-stmt.execute("insert into gongji (title, date, content) values('"+ titleTmp + "','" + formatDate + "','" + contentTmp + "');");	
+String id = request.getParameter("key");
+context.setAttribute("id", id);
+stmt.execute("delete from gongji where id = " + id + ";");
 stmt.close();
 conn.close();
 %>
@@ -32,6 +25,6 @@ conn.close();
 <meta charset="UTF-8">
 </head>
 <body>
-<jsp:forward page="listPage_gongji.jsp" />
+<jsp:forward page="e_02.jsp" />
 </body>
 </html>

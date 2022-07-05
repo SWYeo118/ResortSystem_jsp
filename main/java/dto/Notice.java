@@ -7,6 +7,10 @@ public class Notice {
 	private String title;
 	private Date date;
 	private String content;
+	private int originalPostId;
+	private int replyLevel;
+	private int replyViewOrder;
+	private int viewingCount;
 	
 	public int getId() {
 		return id;
@@ -31,6 +35,30 @@ public class Notice {
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public int getOriginalPostId() {
+		return originalPostId;
+	}
+	public void setOriginalPostId(int originalPostId) {
+		this.originalPostId = originalPostId;
+	}
+	public int getReplyLevel() {
+		return replyLevel;
+	}
+	public void setReplyLevel(int replyLevel) {
+		this.replyLevel = replyLevel;
+	}
+	public int getReplyViewOrder() {
+		return replyViewOrder;
+	}
+	public void setReplyViewOrder(int replyViewOrder) {
+		this.replyViewOrder = replyViewOrder;
+	}
+	public int getViewingCount() {
+		return viewingCount;
+	}
+	public void setViewingCount(int viewingCount) {
+		this.viewingCount = viewingCount;
 	}
 	
 }

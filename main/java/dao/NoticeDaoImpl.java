@@ -54,7 +54,7 @@ public class NoticeDaoImpl implements NoticeDao {
 	public List<Notice> selectAll(){
 		List<Notice> results = new ArrayList<>();
 
-		String sql = "SELECT * FROM gongji ORDER BY id";
+		String sql = "SELECT * FROM gongji ORDER BY id DESC";
 		try (Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/kopoctc", "root", "CJDghd9311@");
 				Statement stmt = conn.createStatement();) {
 			try (ResultSet rs = stmt.executeQuery(sql)) {
@@ -63,12 +63,20 @@ public class NoticeDaoImpl implements NoticeDao {
 					String title = rs.getString(2);
 					Date date = rs.getDate(3);
 					String content = rs.getString(4);
+					int originalPostId = rs.getInt(5);
+					int replyLevel = rs.getInt(6);
+					int replyViewOrder = rs.getInt(7);
+					int viewingCount = rs.getInt(8);
 
 					Notice notice = new Notice();
 					notice.setId(id);
 					notice.setTitle(title);
 					notice.setDate(date);
 					notice.setContent(content);
+					notice.setOriginalPostId(originalPostId);
+					notice.setReplyLevel(replyLevel);
+					notice.setReplyViewOrder(replyViewOrder);
+					notice.setViewingCount(viewingCount);
 					results.add(notice);
 				}
 			}
@@ -83,7 +91,7 @@ public class NoticeDaoImpl implements NoticeDao {
 	public List<Notice> selectAll(int page, int countPerPage) throws SQLException, ClassNotFoundException {
 		List<Notice> results = new ArrayList<>();
 
-		String sql = "SELECT * FROM gongji ORDER BY id limit " + (countPerPage * (page - 1)) + ", " + countPerPage + ";";
+		String sql = "SELECT * FROM gongji ORDER BY id DESC limit " + (countPerPage * (page - 1)) + ", " + countPerPage + ";";
 		try (Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/kopoctc", "root", "CJDghd9311@");
 				Statement stmt = conn.createStatement();) {
 			try (ResultSet rs = stmt.executeQuery(sql)) {
@@ -92,12 +100,20 @@ public class NoticeDaoImpl implements NoticeDao {
 					String title = rs.getString(2);
 					Date date = rs.getDate(3);
 					String content = rs.getString(4);
+					int originalPostId = rs.getInt(5);
+					int replyLevel = rs.getInt(6);
+					int replyViewOrder = rs.getInt(7);
+					int viewingCount = rs.getInt(8);
 
 					Notice notice = new Notice();
 					notice.setId(id);
 					notice.setTitle(title);
 					notice.setDate(date);
 					notice.setContent(content);
+					notice.setOriginalPostId(originalPostId);
+					notice.setReplyLevel(replyLevel);
+					notice.setReplyViewOrder(replyViewOrder);
+					notice.setViewingCount(viewingCount);
 					results.add(notice);
 				}
 			}
@@ -134,10 +150,18 @@ public class NoticeDaoImpl implements NoticeDao {
 				String title = rs.getString(2);
 				Date date = rs.getDate(3);
 				String content = rs.getString(4);
+				int originalPostId = rs.getInt(5);
+				int replyLevel = rs.getInt(6);
+				int replyViewOrder = rs.getInt(7);
+				int viewingCount = rs.getInt(8);
 
 				notice.setTitle(title);
 				notice.setDate(date);
 				notice.setContent(content);
+				notice.setOriginalPostId(originalPostId);
+				notice.setReplyLevel(replyLevel);
+				notice.setReplyViewOrder(replyViewOrder);
+				notice.setViewingCount(viewingCount);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

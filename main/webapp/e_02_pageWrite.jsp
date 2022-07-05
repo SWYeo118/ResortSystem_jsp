@@ -27,7 +27,7 @@ textarea {
 </head>
 <body>
 <center>
-<FORM METHOD=POST action='insertPage_gongji.jsp'>
+<FORM METHOD=POST action='e_02_pageInsert.jsp'>
 <table width=650 border=1 cellspacing=0 cellpadding=5 >
 <tr>
 	<td><b>번호</b></td>
@@ -49,7 +49,7 @@ textarea {
 <table width=650>
 <tr>
 	<td width=600></td>
-	<td><input type=button value="취소" OnClick="location.href='listPage_gongji.jsp'" style="margin: auto;"></td>
+	<td><input type=button value="취소" OnClick="location.href='e_02.jsp'" style="margin: auto;"></td>
 	<td><input type=submit value="쓰기" style="margin: auto;"></td>
 </tr>
 </table>
