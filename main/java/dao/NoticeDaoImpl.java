@@ -86,12 +86,11 @@ public class NoticeDaoImpl implements NoticeDao {
 		return results;
 	}
 	
-	
 	@Override
 	public List<Notice> selectAll(int page, int countPerPage) throws SQLException, ClassNotFoundException {
 		List<Notice> results = new ArrayList<>();
 
-		String sql = "SELECT * FROM gongji ORDER BY id DESC limit " + (countPerPage * (page - 1)) + ", " + countPerPage + ";";
+		String sql = "SELECT * FROM gongji ORDER BY originalPostId DESC, replyViewOrder ASC limit " + (countPerPage * (page - 1)) + ", " + countPerPage + ";";
 		try (Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/kopoctc", "root", "CJDghd9311@");
 				Statement stmt = conn.createStatement();) {
 			try (ResultSet rs = stmt.executeQuery(sql)) {
@@ -168,7 +167,38 @@ public class NoticeDaoImpl implements NoticeDao {
 		}
 		return notice;
 	}
-	
+	@Override
+	public int getMax() {
+		int num = 0;
+		String sql = "SELECT MAX(id) FROM gongji"; // sql문
+		try (Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/kopoctc", "root",
+				"CJDghd9311@"); Statement stmt = conn.createStatement();) {
+			ResultSet rs = stmt.executeQuery(sql); // ResultSet에 가져온 데이터 저장.
+			rs.next();
+			num = rs.getInt(1);
+		} catch (SQLException e) {
+			throw new IllegalStateException("db연결 실패" + e.getMessage());
+		}
+		return num;
+	}
+	@Override
+	public int getReplyViewOrders(int originalPostId) {
+		Notice notice = new Notice();
+		int num1 = 0;
+		String sql = "SELECT MAX(replyViewOrder) FROM gongji where originalPostId=?";
+		try (Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/kopoctc", "root",
+				"CJDghd9311@"); PreparedStatement stmt = conn.prepareStatement(sql);) {
+			stmt.setInt(1, originalPostId);
+			try (ResultSet rs = stmt.executeQuery();) {
+				rs.next();
+				num1 = rs.getInt(1);
+				notice.setOriginalPostId(num1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return num1;
+	}
 }
 
 

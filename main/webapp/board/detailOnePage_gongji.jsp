@@ -48,7 +48,7 @@ context.setAttribute("content", content);
 			</tr>
 			<tr>
 				<td><b>내용</b></td>
-				<td><c:out value="${content}" /></td>
+				<td><textarea style='width:500px; height:250px;' name=content readonly>${content}</textarea></td>
 			</tr>
 		</table>
 		<table width=650 style="margin: auto;">

@@ -13,6 +13,8 @@ public interface NoticeDao {
 	Notice getOne(int id);
 	List<Notice> selectAll(int page, int countPerPage) throws SQLException, ClassNotFoundException;
 	List<Notice> selectAll();
+	int getMax();
+	int getReplyViewOrders(int originalPostId);
 	
 
 }

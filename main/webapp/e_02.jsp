@@ -22,7 +22,6 @@ if (cPage == null || "null".equals(cPage)) {
     cPage = "1";
   }
 int cPageInt = Integer.parseInt(cPage);
-List<Notice> noticeDatas = noticedao.selectAll();
 List<Notice> noticeDatasPage = noticedao.selectAll(cPageInt, 10);
 int totalCount = noticedao.getTotalCount();
 Pagination paginationDatas = paginationImpl.getPagination(cPageInt, 10, 10, totalCount);
@@ -45,6 +44,7 @@ a {
 </head>
 <body>
 <center>
+<span style="font-size: 42px;"><b>이용후기 게시판입니다.</b></span><br><br><br>
 	<table cellspacing=1 cellpadding=1 width=600 border=1>
 		<tr>
 			<td width=70><p align=center>번호</p></td>

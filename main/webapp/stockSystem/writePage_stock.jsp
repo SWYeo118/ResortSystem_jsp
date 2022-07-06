@@ -31,15 +31,15 @@ textarea {
 		<table width=650 border=1 cellspacing=0 cellpadding=5 style="margin-left:auto; margin-right:auto;">
 			<tr>
 				<td><b>상품번호</b></td>
-				<td><input type=number name=stockId required></td>
+				<td><input type=number name=stockId min=1 required></td>
 			</tr>
 			<tr>
 				<td><b>상품명</b></td>
-				<td><input type=text name=stockName pattern="[가-힣a-zA-Z0-9]{1,70}" title="특수문자는 사용할 수 없습니다" size=70 maxlength=70 required></td>
+				<td><input type=text name=stockName pattern="[가-힣a-zA-Z0-9\s]{1,70}" title="특수문자는 사용할 수 없습니다" size=70 maxlength=70 required></td>
 			</tr>
 			<tr>
 				<td><b>재고 현황</b></td>
-				<td><input type=number name=stockSize required></td>
+				<td><input type=number name=stockSize min=0 required></td>
 			</tr>
 			<tr>
 				<td><b>상품등록일</b></td>

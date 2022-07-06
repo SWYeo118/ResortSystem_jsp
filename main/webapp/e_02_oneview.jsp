@@ -66,7 +66,7 @@ context.setAttribute("replyViewOrder", replyViewOrder);
 			</tr>
 			<tr>
 				<td><b>내용</b></td>
-				<td><c:out value="${content}" /></td>
+				<td><textarea style='width:500px; height:250px;' name=content readonly>${content}</textarea></td>
 			</tr>
 			<tr>
 				<td><b>원글번호</b></td>
@@ -75,6 +75,10 @@ context.setAttribute("replyViewOrder", replyViewOrder);
 			<tr>
 				<td><b>대댓글 확인번호</b></td>
 				<td><c:out value="${replyLevel}" /></td>
+			</tr>
+			<tr>
+				<td><b>댓글 배치번호</b></td>
+				<td><c:out value="${replyViewOrder}" /></td>
 			</tr>
 		</table>
 		<table width=650 style="margin: auto;">
@@ -85,8 +89,9 @@ context.setAttribute("replyViewOrder", replyViewOrder);
 				<td><input type=button value="수정"
 					OnClick="location.href='e_02_update.jsp?key=${keyNum}'"></td>
 				<td><input type=button value="삭제" 
-				OnClick="location.href='e_02_delete.jsp?key=${keyNum}'"></td>
-				<td><input type=button value="댓글" OnClick="submitForm('update')"></td>
+					OnClick="location.href='e_02_delete.jsp?key=${keyNum}'"></td>
+				<td><input type=button value="댓글"
+				 	OnClick="location.href='e_02_replyWrite.jsp?key=${keyNum}'"></td>
 			</tr>
 		</table>
 	</FORM>

@@ -44,6 +44,8 @@ a {
 <meta charset="UTF-8">
 </head>
 <body>
+<center>
+	<span style="font-size: 42px;"><b>리조트 소식을 알려드리는 공지사항 게시판입니다.</b></span><br><br><br>
 	<table cellspacing=1 cellpadding=1 width=600 border=1 style="margin: auto;">
 		<tr>
 			<td width=50><p align=center>번호</p></td>
@@ -56,7 +58,7 @@ a {
 						<c:out value="${noticeData.id}" />
 					</p></td>
 				<td width=500><p align=center>
-						<a href='/detailOnePage_gongji.jsp?key=${noticeData.id}'><c:out
+						<a href='board/detailOnePage_gongji.jsp?key=${noticeData.id}'><c:out
 								value="${noticeData.title}" /></a>
 					</p></td>
 				<td width=170><p align=center>
@@ -73,6 +75,8 @@ a {
 		</tr>
 		
 	</table>
+</center>
+<center>	
 		<div class="text-center">
 		<c:url var="urlppPage" value="/board/listPage_gongji.jsp" >
 			<c:param name="cPage" value="${paginationDatas.ppPage}"/>
@@ -89,7 +93,7 @@ a {
 		<c:url var="urlnPage" value="/board/listPage_gongji.jsp">
 			<c:param name="cPage" value="${paginationDatas.nPage}"/>
 		</c:url>
-		
+</center>		
 		<center>
 		<!-- ne는 not equal, 즉 !=의 의미이다. -->
 		<c:if test="${ppPage ne 0 && pPage ne 0}">
@@ -98,7 +102,7 @@ a {
 		</c:if>
 		
 		<c:forEach var="i" begin="${paginationDatas.startPage}" end="${paginationDatas.lastPage}">
-		  <b><a href = '/board/listPage_gongji.jsp?cPage=${i}'>${i}</a></b>
+		  <b><a href = 'board/listPage_gongji.jsp?cPage=${i}'>${i}</a></b>
 		</c:forEach>
 		      
 		<c:if test="${nnPage ne 0 && nPage ne 0}">

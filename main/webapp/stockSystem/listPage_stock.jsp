@@ -47,7 +47,7 @@ a {
 <center>
 	<table cellspacing=1 cellpadding=1 width=700 border=1>
 		<tr>
-			<td width=50><p align=center>상품번호</p></td>
+			<td width=100><p align=center>상품번호</p></td>
 			<td width=350><p align=center>상품명</p></td>
 			<td width=160><p align=center>현재 재고 수</p></td>
 			<td width=160><p align=center>재고파악일</p></td>
@@ -55,7 +55,7 @@ a {
 		</tr>
 		<c:forEach var="stockData" items="${stockDatasPage}">
 			<tr>
-				<td width=50><p align=center><c:out value="${stockData.stockId}" /></p></td>
+				<td width=100><p align=center><c:out value="${stockData.stockId}" /></p></td>
 				<td width=300><p align=center><a href='detailOnePage_stock.jsp?key=${stockData.stockId}'><c:out value="${stockData.stockName}" /></a></p></td>
 				<td width=100><p align=center><c:out value="${stockData.stockSize}" /></p></td>
 				<td width=170><p align=center><c:out value="${stockData.stockUpdateDate}" /></p></td>

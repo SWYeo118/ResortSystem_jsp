@@ -1,3 +1,5 @@
+<%@page import="dao.NoticeDao"%>
+<%@page import="dao.NoticeDaoImpl"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.DriverManager"%>
@@ -32,10 +34,11 @@ textarea {
 <tr>
 	<td><b>번호</b></td>
 	<td>신규(insert)<input type=hidden name=id value='INSERT'></td>
+	<input type=hidden name=maxId value='${maxId}'>
 </tr>
 <tr>
 	<td><b>제목</b></td>
-	<td><input type=text name=title pattern="[가-힣a-zA-Z0-9]{1,70}" title="특수문자는 사용할 수 없습니다" size=70 maxlength=70 required></td>
+	<td><input type=text name=title pattern="[가-힣a-zA-Z0-9\s]{1,70}" title="특수문자는 사용할 수 없습니다" size=70 maxlength=70 required></td>
 </tr>
 <tr>
 	<td><b>일자</b></td>
