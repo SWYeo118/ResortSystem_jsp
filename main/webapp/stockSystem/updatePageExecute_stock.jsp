@@ -9,7 +9,7 @@
 request.setCharacterEncoding("utf-8");
 ServletContext context = getServletContext();
 Class.forName("com.mysql.cj.jdbc.Driver");
-Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kopoctc", "root", "CJDghd9311@");
+Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kopoctc", "root", "");
 Statement stmt = conn.createStatement();
 
 String key = request.getParameter("stockId");
