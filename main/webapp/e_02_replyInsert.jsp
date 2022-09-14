@@ -14,7 +14,7 @@ String bar;
 String barSum = "";
 String replyTitle = "";
 Class.forName("com.mysql.cj.jdbc.Driver");
-Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kopoctc", "root", "CJDghd9311@");
+Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kopoctc", "root", "");
 Statement stmt = conn.createStatement();
 String replyContent = request.getParameter("replyContent");
 String originalPostId = request.getParameter("originalPostId");
