@@ -10,7 +10,7 @@
 <%
 ServletContext context = getServletContext();
 Class.forName("com.mysql.cj.jdbc.Driver");
-Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kopoctc", "root", "CJDghd9311@");
+Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kopoctc", "root", "");
 Statement stmt = conn.createStatement();
 NoticeDao noticedao = new NoticeDaoImpl();
 
