@@ -33,7 +33,7 @@ DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 String formatDate = now.format(formatter);
 
 Class.forName("com.mysql.cj.jdbc.Driver");
-Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kopoctc", "root", "CJDghd9311@");
+Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kopoctc", "root", "");
 Statement stmt = conn.createStatement();
 
 stmt.execute("insert into stockList (stockId, stockName, stockSize, productUploadDate, stockUpdateDate, stockDescription, stockPicture) values ('"+ stockId + "','" + stockName + "','" + stockSize + "','" +  formatDate +  "','" + formatDate + "','" + stockDescription + "','" + imageAdd + "');");	
