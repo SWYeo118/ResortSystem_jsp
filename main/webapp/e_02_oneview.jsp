@@ -15,7 +15,7 @@ String key = request.getParameter("key");
 int keyNum = Integer.parseInt(key);
 
 Class.forName("com.mysql.cj.jdbc.Driver");
-Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kopoctc", "root", "CJDghd9311@");
+Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kopoctc", "root", "");
 Statement stmt = conn.createStatement();
 stmt.execute("UPDATE gongji SET viewingCount = viewingCount + 1 where id=" + keyNum + ";");
 
