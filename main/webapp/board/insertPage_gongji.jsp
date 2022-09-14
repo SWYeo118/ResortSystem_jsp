@@ -13,7 +13,7 @@ String formatDate = now.format(formatter);
 ServletContext context = getServletContext();
 context.setAttribute("formatDate", formatDate);
 Class.forName("com.mysql.cj.jdbc.Driver");
-Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kopoctc", "root", "CJDghd9311@");
+Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kopoctc", "root", "");
 Statement stmt = conn.createStatement();
 String titleTmp = request.getParameter("title");
 String contentTmp = request.getParameter("content");
