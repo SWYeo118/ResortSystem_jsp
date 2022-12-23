@@ -25,7 +25,7 @@ public class NoticeDaoImpl implements NoticeDao {
 	public void makingTable() {
 		
 		try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kopoctc", "root",
-				"CJDghd9311@");) {
+				"");) {
 			String sql = "create table gongji(id int not null primary key auto_increment, title varchar(70), date date, content text)DEFAULT CHARSET=utf8";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.executeUpdate();
@@ -43,7 +43,7 @@ public class NoticeDaoImpl implements NoticeDao {
 	public void dropTable() {
 		String sql = "drop table gongji";
 		try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kopoctc", "root",
-				"CJDghd9311@"); PreparedStatement stmt = conn.prepareStatement(sql);) {
+				""); PreparedStatement stmt = conn.prepareStatement(sql);) {
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			throw new IllegalStateException("drop 실패 " + e.getMessage());
@@ -55,7 +55,7 @@ public class NoticeDaoImpl implements NoticeDao {
 		List<Notice> results = new ArrayList<>();
 
 		String sql = "SELECT * FROM gongji ORDER BY id DESC";
-		try (Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/kopoctc", "root", "CJDghd9311@");
+		try (Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/kopoctc", "root", "");
 				Statement stmt = conn.createStatement();) {
 			try (ResultSet rs = stmt.executeQuery(sql)) {
 				while (rs.next()) {
@@ -91,7 +91,7 @@ public class NoticeDaoImpl implements NoticeDao {
 		List<Notice> results = new ArrayList<>();
 
 		String sql = "SELECT * FROM gongji ORDER BY originalPostId DESC, replyViewOrder ASC limit " + (countPerPage * (page - 1)) + ", " + countPerPage + ";";
-		try (Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/kopoctc", "root", "CJDghd9311@");
+		try (Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/kopoctc", "root", "");
 				Statement stmt = conn.createStatement();) {
 			try (ResultSet rs = stmt.executeQuery(sql)) {
 				while (rs.next()) {
@@ -127,7 +127,7 @@ public class NoticeDaoImpl implements NoticeDao {
 		int num = 0;
 		String sql = "SELECT count(*) FROM gongji"; // sql문
 		try (Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/kopoctc", "root",
-				"CJDghd9311@"); Statement stmt = conn.createStatement();) {
+				""); Statement stmt = conn.createStatement();) {
 			ResultSet rs = stmt.executeQuery(sql); // ResultSet에 가져온 데이터 저장.
 			rs.next();
 			num = rs.getInt(1);
@@ -142,7 +142,7 @@ public class NoticeDaoImpl implements NoticeDao {
 		Notice notice = new Notice();
 		String sql = "SELECT * FROM gongji where id=?";
 		try (Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/kopoctc", "root",
-				"CJDghd9311@"); PreparedStatement stmt = conn.prepareStatement(sql);) {
+				""); PreparedStatement stmt = conn.prepareStatement(sql);) {
 			stmt.setInt(1, id);
 			try (ResultSet rs = stmt.executeQuery();) {
 				rs.next();
@@ -172,7 +172,7 @@ public class NoticeDaoImpl implements NoticeDao {
 		int num = 0;
 		String sql = "SELECT MAX(id) FROM gongji"; // sql문
 		try (Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/kopoctc", "root",
-				"CJDghd9311@"); Statement stmt = conn.createStatement();) {
+				""); Statement stmt = conn.createStatement();) {
 			ResultSet rs = stmt.executeQuery(sql); // ResultSet에 가져온 데이터 저장.
 			rs.next();
 			num = rs.getInt(1);
@@ -187,7 +187,7 @@ public class NoticeDaoImpl implements NoticeDao {
 		int num1 = 0;
 		String sql = "SELECT MAX(replyViewOrder) FROM gongji where originalPostId=?";
 		try (Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/kopoctc", "root",
-				"CJDghd9311@"); PreparedStatement stmt = conn.prepareStatement(sql);) {
+				""); PreparedStatement stmt = conn.prepareStatement(sql);) {
 			stmt.setInt(1, originalPostId);
 			try (ResultSet rs = stmt.executeQuery();) {
 				rs.next();
@@ -208,7 +208,7 @@ public class NoticeDaoImpl implements NoticeDao {
 //public void update(int id, String title, String content) {
 //	String sql = "UPDATE gongji SET title=?, content=? where id=?";
 //	try (Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/kopoctc", "root",
-//			"CJDghd9311@"); PreparedStatement stmt = conn.prepareStatement(sql);) {
+//			""); PreparedStatement stmt = conn.prepareStatement(sql);) {
 //		stmt.setString(1, title);
 //		stmt.setString(2, content);
 //		stmt.setInt(3, id);
@@ -223,7 +223,7 @@ public class NoticeDaoImpl implements NoticeDao {
 //	ScoreItem scoreItem = new ScoreItem();
 //	String sql = "SELECT * FROM examtable4 where studentid=?"; // sql문
 //	try (Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/kopoctc", "root",
-//			"CJDghd9311@"); PreparedStatement stmt = conn.prepareStatement(sql);) {
+//			""); PreparedStatement stmt = conn.prepareStatement(sql);) {
 //		stmt.setInt(1, studentid);
 //		try (ResultSet rs = stmt.executeQuery();) {
 //			rs.next();
@@ -251,7 +251,7 @@ public class NoticeDaoImpl implements NoticeDao {
 //	// 동적 쿼리 생성
 //	String sql = "INSERT INTO examtable4 VALUES (?, ?, ?, ?, ?)";
 //	try (Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/kopoctc", "root",
-//			"CJDghd9311@"); PreparedStatement stmt = conn.prepareStatement(sql);) {
+//			""); PreparedStatement stmt = conn.prepareStatement(sql);) {
 //		stmt.setString(1, scoreItems.getName());
 //		stmt.setInt(2, scoreItems.getStudentId());
 //		stmt.setInt(3, scoreItems.getKor());
