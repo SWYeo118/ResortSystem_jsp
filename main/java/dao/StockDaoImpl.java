@@ -25,7 +25,7 @@ public class StockDaoImpl implements StockDao {
 	public void makingTable() {
 		
 		try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kopoctc", "root",
-				"CJDghd9311@");) {
+				"");) {
 			String sql = "create table stockList(stockId int not null primary key, stockName varchar(70), stockSize int, productUploadDate date, stockUpdateDate date, stockDescription text, stockPicture varChar(100))DEFAULT CHARSET=utf8";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.executeUpdate();
@@ -43,7 +43,7 @@ public class StockDaoImpl implements StockDao {
 	public void dropTable() {
 		String sql = "drop table stockList";
 		try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kopoctc", "root",
-				"CJDghd9311@"); PreparedStatement stmt = conn.prepareStatement(sql);) {
+				""); PreparedStatement stmt = conn.prepareStatement(sql);) {
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			throw new IllegalStateException("drop 실패 " + e.getMessage());
@@ -55,7 +55,7 @@ public class StockDaoImpl implements StockDao {
 		List<Stock> results = new ArrayList<>();
 
 		String sql = "SELECT * FROM stockList ORDER BY stockId";
-		try (Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/kopoctc", "root", "CJDghd9311@");
+		try (Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/kopoctc", "root", "");
 				Statement stmt = conn.createStatement();) {
 			try (ResultSet rs = stmt.executeQuery(sql)) {
 				while (rs.next()) {
@@ -89,7 +89,7 @@ public class StockDaoImpl implements StockDao {
 		List<Stock> results = new ArrayList<>();
 
 		String sql = "SELECT * FROM stockList ORDER BY stockId limit " + (countPerPage * (page - 1)) + ", " + countPerPage + ";";
-		try (Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/kopoctc", "root", "CJDghd9311@");
+		try (Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/kopoctc", "root", "");
 				Statement stmt = conn.createStatement();) {
 			try (ResultSet rs = stmt.executeQuery(sql)) {
 				while (rs.next()) {
@@ -123,7 +123,7 @@ public class StockDaoImpl implements StockDao {
 		int num = 0;
 		String sql = "SELECT count(*) FROM stockList"; // sql문
 		try (Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/kopoctc", "root",
-				"CJDghd9311@"); Statement stmt = conn.createStatement();) {
+				""); Statement stmt = conn.createStatement();) {
 			ResultSet rs = stmt.executeQuery(sql); // ResultSet에 가져온 데이터 저장.
 			rs.next();
 			num = rs.getInt(1);
@@ -138,7 +138,7 @@ public class StockDaoImpl implements StockDao {
 		Stock stock = new Stock();
 		String sql = "SELECT * FROM stockList where stockId=?";
 		try (Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/kopoctc", "root",
-				"CJDghd9311@"); PreparedStatement stmt = conn.prepareStatement(sql);) {
+				""); PreparedStatement stmt = conn.prepareStatement(sql);) {
 			stmt.setInt(1, stockId);
 			try (ResultSet rs = stmt.executeQuery();) {
 				rs.next();
@@ -171,7 +171,7 @@ public class StockDaoImpl implements StockDao {
 //public void update(int id, String title, String content) {
 //	String sql = "UPDATE gongji SET title=?, content=? where id=?";
 //	try (Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/kopoctc", "root",
-//			"CJDghd9311@"); PreparedStatement stmt = conn.prepareStatement(sql);) {
+//			""); PreparedStatement stmt = conn.prepareStatement(sql);) {
 //		stmt.setString(1, title);
 //		stmt.setString(2, content);
 //		stmt.setInt(3, id);
@@ -186,7 +186,7 @@ public class StockDaoImpl implements StockDao {
 //	ScoreItem scoreItem = new ScoreItem();
 //	String sql = "SELECT * FROM examtable4 where studentid=?"; // sql문
 //	try (Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/kopoctc", "root",
-//			"CJDghd9311@"); PreparedStatement stmt = conn.prepareStatement(sql);) {
+//			""); PreparedStatement stmt = conn.prepareStatement(sql);) {
 //		stmt.setInt(1, studentid);
 //		try (ResultSet rs = stmt.executeQuery();) {
 //			rs.next();
@@ -214,7 +214,7 @@ public class StockDaoImpl implements StockDao {
 //	// 동적 쿼리 생성
 //	String sql = "INSERT INTO examtable4 VALUES (?, ?, ?, ?, ?)";
 //	try (Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/kopoctc", "root",
-//			"CJDghd9311@"); PreparedStatement stmt = conn.prepareStatement(sql);) {
+//			""); PreparedStatement stmt = conn.prepareStatement(sql);) {
 //		stmt.setString(1, scoreItems.getName());
 //		stmt.setInt(2, scoreItems.getStudentId());
 //		stmt.setInt(3, scoreItems.getKor());
